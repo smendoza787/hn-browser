@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Story from './Story'
 import handleTimestamp from '../helpers/handleTimestamp'
 
-class StoryContainer extends Component {
+class StoriesContainer extends Component {
   constructor() {
     super()
 
@@ -40,9 +40,7 @@ class StoryContainer extends Component {
     const renderStories = this.state.storyObjects.map(thing => {
       return <Story
                title={thing.title}
-               text={thing.text}
                url={thing.url}
-               type={thing.type}
                by={thing.by}
                formatDate={handleTimestamp(thing.time)}
                score={thing.score}
@@ -50,11 +48,11 @@ class StoryContainer extends Component {
     })
 
     return (
-      <div className="story-container">
+      <div className="stories-container">
         {renderStories}
       </div>
     )
   }
 }
 
-export default StoryContainer
+export default StoriesContainer

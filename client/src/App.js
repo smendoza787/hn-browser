@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
-import Home from './components/Home'
+import StoriesContainer from './components/StoriesContainer'
 
 class App extends Component {
   render() {
     return (
-      <Home />
-    );
+      <StoriesContainer />
+    )
   }
 }
 
-export default App;
+export default App
