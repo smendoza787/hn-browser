@@ -1,13 +1,20 @@
 import React from 'react'
 
-const Story = ({ title, text, url, type, by, formatDate, score, descendants }) =>
-    <div>
-      <a href={url}><h3>{title}</h3></a>
-      <p>Type: {type}</p>
-      <p>By: {by} at {formatDate}</p>
-      <p>Score: {score}</p>
-      <p>Text: {text}</p>
-      <p>{descendants} Comments</p>
+const Story = ({ title, url, by, formatDate, score, descendants }) =>
+    <div
+      className="story"
+      style={{
+        backgroundColor: '#ff6600',
+        borderRadius: '3px',
+        margin: '5px',
+        padding: '10px',
+        display: 'flex',
+        justifyContent: 'space-between'
+      }}>
+        <a href={url}><h3>{title}</h3></a>
+        <p>By: {by} at {formatDate}</p>
+        <p>Score: {score}</p>
+        <p>{descendants} Comments</p>
     </div>
 
   export default Story
