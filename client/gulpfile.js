@@ -7,11 +7,7 @@ gulp.task('serve', function() {
 
 gulp.task('sass', function() {
   return gulp.src("./src/sass/**/*.{scss,sass}")
-    .pipe(sass({
-      indentedSyntax: true,
-      includePaths: ['./bower_components/styles/sass'], // Add here your libs
-      errLogToConsole: true
-    }).on('error', sass.logError))
+    .pipe(sass().on('error', sass.logError))
     .pipe(gulp.dest('./src'));
 });
 
