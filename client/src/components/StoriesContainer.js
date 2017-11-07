@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
+import  { BrowserRouter as Router, Route } from 'react-router-dom'
 import Story from './Story'
+import StoryPage from './StoryPage'
 import handleTimestamp from '../helpers/handleTimestamp'
 
 class StoriesContainer extends Component {
@@ -32,25 +34,27 @@ class StoriesContainer extends Component {
     if (prevState.urls !== this.state.urls) {
       Promise
         .all(this.state.urls.map(url => this.getContent(url)))
-        .then(console.log('IS ALL DUN', this.state.storyObjects))
     }
   }
 
   render() {
     const renderStories = this.state.storyObjects.map(thing => {
       return <Story
-               title={thing.title}
-               url={thing.url}
-               by={thing.by}
-               formatDate={handleTimestamp(thing.time)}
-               score={thing.score}
-               descendants={thing.descendants} />
+               story={thing}
+               formatDate={handleTimestamp(thing.time)} />
     })
 
     return (
-      <div className="stories-container">
-        {renderStories}
-      </div>
+      <Router>
+        <div>
+          <Route path="/:id" component={StoryPage} />
+          <Route exact path="/" render={() => (
+            <div className="stories-container">
+              {renderStories}
+            </div>
+          )}/>
+        </div>
+      </Router>
     )
   }
 }

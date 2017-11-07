@@ -1,11 +1,15 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
-const Story = ({ title, url, by, formatDate, score, descendants }) =>
-    <div className="story">
-        <a href={url}><h3>{title}</h3></a>
-        <p>By: {by} at {formatDate}</p>
-        <p>Score: {score}</p>
-        <p>{descendants} Comments</p>
-    </div>
+const Story = ({ story, formatDate }) =>
+	<div className="story">
+		<p>ID: {story.id}</p>
+		<a href={story.url}><h3>{story.title}</h3></a>
+		<p>By: {story.by} at {formatDate}</p>
+		<p>Score: {story.score}</p>
+		<Link to={`${story.id}`}>
+			{story.descendants} Comments
+		</Link>
+	</div>
 
   export default Story
