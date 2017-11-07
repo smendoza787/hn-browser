@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import  { BrowserRouter as Router, Route } from 'react-router-dom'
 import Story from './Story'
 import StoryPage from './StoryPage'
-import handleTimestamp from '../helpers/handleTimestamp'
+import moment from 'moment'
 
 class StoriesContainer extends Component {
   constructor() {
@@ -41,7 +41,7 @@ class StoriesContainer extends Component {
     const renderStories = this.state.storyObjects.map(thing => {
       return <Story
                story={thing}
-               formatDate={handleTimestamp(thing.time)} />
+               formatDate={moment.unix(thing.time).fromNow()} />
     })
 
     return (
