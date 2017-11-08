@@ -25,10 +25,14 @@ class StoryPage extends Component {
     fetch(`https://hacker-news.firebaseio.com/v0/item/${this.props.match.params.id}.json`)
       .then(resp => resp.json())
       .then(data => {
-        this.setState({
-          story: data,
-          commentUrls: data.kids.map(id => `https://hacker-news.firebaseio.com/v0/item/${id}.json`)
-        })
+        if (data.kids) {
+          this.setState({ 
+            story: data, 
+            commentUrls: data.kids.map(id => `https://hacker-news.firebaseio.com/v0/item/${id}.json`) 
+          })
+        } else {
+          this.setState({ story: data })
+        }
       })
   }
   
