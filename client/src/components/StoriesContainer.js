@@ -40,6 +40,7 @@ class StoriesContainer extends Component {
   render() {
     const renderStories = this.state.storyObjects.map(thing => {
       return <Story
+               key={thing.id}
                story={thing}
                formatDate={moment.unix(thing.time).fromNow()} />
     })

@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 class CommentsContainer extends Component {
   render() {
     const renderComments = this.props.comments.map(comment => (
-      <Comment comment={comment} />
+      <Comment key={comment.id} comment={comment} />
     ))
     return (
       <div className="comments-container">

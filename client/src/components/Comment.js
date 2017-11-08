@@ -26,7 +26,7 @@ class Comment extends Component {
 
   render() {
     if (this.state.kids.length > 0) {
-      const renderChildren = this.state.kids.map(comment => <Comment comment={comment} styling={{ position: 'relative', left: '10px' }} />) 
+      const renderChildren = this.state.kids.map(comment => <Comment comment={comment} styling={{ position: 'relative', left: '15px' }} />) 
       return (
         <div>
           <div className="comment" style={this.props.styling}>
