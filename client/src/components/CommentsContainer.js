@@ -9,7 +9,7 @@ class CommentsContainer extends Component {
     ))
     return (
       <div className="comments-container">
-        <h1>Comments for {this.props.story.title}</h1>
+        <h1>Comments</h1>
         {renderComments}
       </div>
     )

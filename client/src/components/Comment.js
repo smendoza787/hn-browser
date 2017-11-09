@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import moment from 'moment'
+import decodeEntities from '../helpers/decodeEntities'
 
 class Comment extends Component {
   constructor(props) {
@@ -26,18 +27,14 @@ class Comment extends Component {
 
   render() {
     if (this.state.kids.length > 0) {
-      const renderChildren = this.state.kids.map(comment => <Comment comment={comment} styling={{ position: 'relative', left: '15px' }} />) 
-      return (
-        <div>
+      const renderChildren = this.state.kids.map(comment => <Comment key={comment.id} comment={comment} />) 
+        return (
           <div className="comment" style={this.props.styling}>
             <p><strong>{this.props.comment.by}</strong> {moment.unix(this.props.comment.time).fromNow()}</p>
-            <p>{this.props.comment.text}</p>
-          </div>
-          <div className="comment-children" style={this.props.styling}>
+            <p>{decodeEntities(this.props.comment.text)}</p>
             {renderChildren}
-          </div>    
-        </div>
-      )
+          </div>  
+        )
     } else {
       return (
         <div className="comment">
