@@ -1,10 +1,30 @@
+@import url("https://fonts.googleapis.com/css?family=Barlow+Condensed");
 .story {
   background-color: #ff6600;
   border-radius: 3px;
   margin: 5px;
   padding: 10px;
   display: flex;
-  justify-content: space-between; }
+  flex-direction: column;
+  justify-content: center;
+  width: 50%;
+  font-family: "Barlow Condensed", sans-serif; }
+  .story h3 {
+    margin: 0; }
+  .story a {
+    color: #fff;
+    text-decoration: none; }
+    .story a:hover {
+      color: black; }
+
+.story-details {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0;
+  margin: 0; }
+  .story-details p {
+    margin-right: 10px; }
 
 .comment {
   background-color: rgba(24, 104, 196, 0.2);
