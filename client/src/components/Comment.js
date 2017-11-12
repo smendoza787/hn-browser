@@ -25,6 +25,10 @@ class Comment extends Component {
     }
   }
 
+  decodeComment(comment) {
+    return he.decode(comment, {'strict': true})
+  }
+
   render() {
     if (this.state.kids.length > 0) {
       const renderChildren = this.state.kids.map(comment => {
@@ -35,7 +39,7 @@ class Comment extends Component {
         return (
           <div className="comment" style={this.props.styling}>
             <p><strong>{this.props.comment.by}</strong> {moment.unix(this.props.comment.time).fromNow()}</p>
-            {he.decode(this.props.comment.text)}
+            <p>{this.decodeComment(this.props.comment.text)}</p>
             {renderChildren}
           </div>  
         )
@@ -43,7 +47,7 @@ class Comment extends Component {
       return (
         <div className="comment">
           <p><strong>{this.props.comment.by}</strong> {moment.unix(this.props.comment.time).fromNow()}</p>
-          {this.props.comment.text}
+          <p>{this.props.comment.text}</p>
         </div>
       )
     }
